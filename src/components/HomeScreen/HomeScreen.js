@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "../UI/Buttons/Button";
+import { Link } from "react-router-dom";
 import "./HomeScreen.css";
 
 export default function HomeScreen() {
@@ -13,7 +14,9 @@ export default function HomeScreen() {
         </blockquote>
         <div className="auth-buttons">
           <Button className="signup-auth">Sign UP!</Button>
-          <Button className="login-auth">Login</Button>
+          <Link to="/login">
+            <Button className="login-auth">Login</Button>
+          </Link>
         </div>
       </div>
     </div>

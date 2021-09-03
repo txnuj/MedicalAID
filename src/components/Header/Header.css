@@ -21,6 +21,9 @@
   font-family: "Roboto", sans-serif;
   letter-spacing: 0.5px;
 }
+.nav-title h2 {
+  text-decoration: none;
+}
 .link {
   margin-left: 20px;
   cursor: pointer;
