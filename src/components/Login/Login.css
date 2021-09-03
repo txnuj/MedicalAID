@@ -23,7 +23,9 @@
   background: rgb(109, 0, 182);
   color: white;
 }
-
+.auth-choice-container button:active {
+  transform: scale(97%);
+}
 /*Login form styles */
 
 .login-fieldset {
@@ -54,6 +56,13 @@
 .username-container,
 .password-container {
   margin-top: 40px;
+}
+.error-msg {
+  margin-top: 50px;
+  color: red;
+  animation: error 100ms 100ms forwards;
+  transform: scale(0%);
+  opacity: 0;
 }
 /* Margin align input fields of username and password */
 .username-container input,
@@ -102,4 +111,11 @@
 }
 .login:hover {
   background: darkblue;
+}
+
+@keyframes error {
+  100% {
+    transform: scale(100%);
+    opacity: 1;
+  }
 }
