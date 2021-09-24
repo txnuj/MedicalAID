@@ -1,8 +1,14 @@
 import { React, useState } from "react";
+import { Redirect, Route } from "react-router";
 import Button from "../UI/Buttons/Button";
 import "./Login.css";
 
-export default function Login() {
+export default function Login(props) {
+  /* let adminAccess = {
+    id: "admin123",
+    name: "admin",
+    pass: "admin",
+  }; */
   const [isAdmin, setIsAdmin] = useState(false);
   //Input storing handlers
   const [uname, setUname] = useState("");
@@ -17,6 +23,18 @@ export default function Login() {
   const [errorMessage, setErrorMessage] = useState(null);
   const [adminIdValidity, setAdminIdValidity] = useState(null);
   const [userRnoValidity, setUserRnoValidity] = useState(null);
+
+  /*   const [adminPage, setAdminPage] = useState(false);
+  const [adminAuth, setAdminAuth] = useState(false); */
+
+  /*   useEffect(() => {
+    if (adminAuth === true) {
+      setAdminPage(true);
+      console.log("true");
+    } else {
+      setAdminPage(false);
+    }
+  }, [adminAuth, setAdminPage]); */
 
   //Handler functions
   //Input handlers
@@ -77,12 +95,22 @@ export default function Login() {
     e.preventDefault();
     if (isAdmin) {
       if (unameValidity && passValidity && adminIdValidity) {
-        console.log(uname, password, adminId);
-        setErrorMessage("");
+        console.log(unameValidity, passValidity, adminIdValidity);
+        /*  if (
+          adminId === adminAccess.id &&
+          uname === adminAccess.name &&
+          password === adminAccess.pass
+        ) {
+          setAdminAuth(true);
+          props.onAdminAuth(adminAuth);
+          setErrorMessage("");
+        } else {
+          setErrorMessage("Incorrect credentials!");
+        } */
       } else {
         setErrorMessage("Form not valid yet! Try again!");
       }
-    } else if (!isAdmin) {
+    } else {
       if (unameValidity && passValidity && userRnoValidity) {
         console.log(uname, password, userRno);
         setErrorMessage("");
@@ -103,7 +131,7 @@ export default function Login() {
               setErrorMessage("");
             }}
           >
-            Admin <i class="fas fa-user-lock"></i>
+            Admin <i className="fas fa-user-lock"></i>
           </button>
           <button
             onClick={() => {
@@ -111,7 +139,7 @@ export default function Login() {
               setErrorMessage("");
             }}
           >
-            User <i class="fas fa-user"></i>
+            User <i className="fas fa-user"></i>
           </button>
         </div>
       </div>
@@ -212,6 +240,7 @@ export default function Login() {
             <br />
           </div>
           {errorMessage && <p className="error-msg">{errorMessage}</p>}
+
           <Button className="login">Login</Button>
         </fieldset>
       </form>
