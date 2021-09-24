@@ -78,6 +78,18 @@ export default function Login() {
     if (isAdmin) {
       if (unameValidity && passValidity && adminIdValidity) {
         console.log(uname, password, adminId);
+        // fetch("http://localhost:8080/check/getUser",{
+        //   method: 'POST',
+        //   body: JSON.stringify({
+        //     username : uname,
+        //     password : password,
+        //     adminId : adminId
+        //   }),
+        //   headers: {
+        //     'Content-type':'application/json'
+        //   }
+        // }).then(res=>res.json()).then(res=>console.log(res)).catch(err=>console.log(err));
+
         setErrorMessage("");
       } else {
         setErrorMessage("Form not valid yet! Try again!");
