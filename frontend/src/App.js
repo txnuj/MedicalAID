@@ -5,6 +5,7 @@ import HomeScreen from "./components/HomeScreen/HomeScreen";
 import Login from "./components/Login/Login";
 import PrivateRoute from "./components/Helper/PrivateRoute";
 
+import Signup from "./components/Signup/Signup";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
