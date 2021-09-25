@@ -23,7 +23,7 @@ const Patient = sequalize.define('patient',{
         allowNull:false
     },
     patient_mobile:{
-        type:Sequelize.INTEGER,
+        type:Sequelize.BIGINT,
         allowNull:false,
         unique:true
     },
@@ -40,6 +40,7 @@ const Patient = sequalize.define('patient',{
         allowNull:false
     }
 });
+
 
 
 module.exports = Patient;
