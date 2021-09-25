@@ -18,6 +18,7 @@ export default function Login() {
   const [hospname, sethospname] = useState("");
   const [hosploc, sethosploc] = useState("");
   const [hosptype, sethosptype] = useState("");
+  const [hospcont, sethospcont] = useState("");
 
   //userReference number
   const [userRno, setUserRno] = useState("");
@@ -37,6 +38,7 @@ export default function Login() {
   const [hospnameValidity, sethospnameValidity] = useState(null);
   const [hosplocValidity, sethosplocValidity] = useState(null);
   const [hosptypeValidity, sethosptypeValidity] = useState(null);
+  const [hospcontValidity, sethospcontValidity] = useState(null);
 
   //Handler functions
   //Input handlers
@@ -86,6 +88,9 @@ export default function Login() {
   };
   const hosptypeInputHandler = (e) => {
     sethosptype(e.target.value);
+  };
+  const hospcontInputHandler = (e) => {
+    sethospcont(e.target.value);
   };
 
   //Validity handler
@@ -216,6 +221,15 @@ export default function Login() {
       setErrorMessage("");
     }
   };
+  const hospcontValidityHandler = () => {
+    if (hospcont.trim() === "") {
+      sethospcontValidity(false);
+      setErrorMessage("Hospital Contact field cannot be empty!");
+    } else {
+      sethospcontValidity(true);
+      setErrorMessage("");
+    }
+  };
   const formSubmitHandler = (e) => {
     e.preventDefault();
     if (isAdmin) {
@@ -225,7 +239,8 @@ export default function Login() {
         adminIdValidity &&
         hospnameValidity &&
         hosptypeValidity &&
-        hosplocValidity
+        hosplocValidity && 
+        hospcontValidity
       ) {
         console.log(uname, password, adminId);
         setErrorMessage("");
@@ -557,6 +572,28 @@ export default function Login() {
                 name="hosptype"
                 onChange={hosptypeInputHandler}
                 onBlur={hosptypeValidityHandler}
+                style={{
+                  outlineColor: `${
+                    userRnoValidity !== false ? "black" : "salmon"
+                  }`,
+                }}
+              />
+                      <br />
+              <br />
+              <label
+                htmlFor="hospcont"
+                style={{
+                  color: `${adminIdValidity !== false ? "black" : "red"}`,
+                }}
+              >
+                Hospital Contact Num:
+              </label>
+              <input
+                type="text"
+                id="hospcont"
+                name="hospcont"
+                onChange={hospcontInputHandler}
+                onBlur={hospcontValidityHandler}
                 style={{
                   outlineColor: `${
                     userRnoValidity !== false ? "black" : "salmon"
