@@ -2,9 +2,10 @@ import React from "react";
 import AdminRecords from "./Records/AdminRecords";
 import "./Admin.css";
 import { useState } from "react";
+import { Redirect } from "react-router";
 import RegisterPatient from "./RegisterPatient/RegisterPatient";
 
-export default function Admin() {
+export default function Admin({ authorized }) {
   const PATIENT_DETAILS = [
     {
       id: "r1",
@@ -56,7 +57,9 @@ export default function Admin() {
       return [newRecord, ...prevRecord];
     });
   };
-
+  if (!authorized) {
+    return <Redirect to="/login" />;
+  }
   return (
     <div className="admin-container">
       <div className="admin-card">

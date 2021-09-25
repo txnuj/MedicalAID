@@ -1,13 +1,15 @@
 import { React, useState } from "react";
+import { useHistory } from "react-router-dom";
 import Button from "../UI/Buttons/Button";
 import "./Login.css";
 
 export default function Login(props) {
-  /* let adminAccess = {
+  let history = useHistory();
+  let adminAccess = {
     id: "admin123",
     name: "admin",
     pass: "admin",
-  }; */
+  };
   const [isAdmin, setIsAdmin] = useState(false);
   //Input storing handlers
   const [uname, setUname] = useState("");
@@ -94,17 +96,16 @@ export default function Login(props) {
     e.preventDefault();
     if (isAdmin) {
       if (unameValidity && passValidity && adminIdValidity) {
-        /*  if (
+        if (
           adminId === adminAccess.id &&
           uname === adminAccess.name &&
           password === adminAccess.pass
         ) {
-          setAdminAuth(true);
-          props.onAdminAuth(adminAuth);
-          setErrorMessage("");
+          props.setAuth(true);
+          history.push("/admin");
         } else {
           setErrorMessage("Incorrect credentials!");
-        } */
+        }
         console.log(uname, password, adminId);
         // fetch("http://localhost:8080/check/getUser",{
         //   method: 'POST',
