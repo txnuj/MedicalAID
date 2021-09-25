@@ -51,6 +51,12 @@ export default function Admin() {
     setRecordFormActive(true);
   };
 
+  const updatedRecordsHandler = (newRecord) => {
+    setUpdatedRecords((prevRecord) => {
+      return [newRecord, ...prevRecord];
+    });
+  };
+
   return (
     <div className="admin-container">
       <div className="admin-card">
@@ -139,7 +145,7 @@ export default function Admin() {
           </div>
         </div>
       ) : (
-        <RegisterPatient />
+        <RegisterPatient updateRecords={updatedRecordsHandler} />
       )}
     </div>
   );
