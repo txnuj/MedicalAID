@@ -21,6 +21,22 @@ export default function RegisterPatient() {
       /\d/.test(mobileRef.current.value) &&
       ailmentRef.current.value.trim() !== ""
     ) {
+      fetch("http://localhost:8080/register/api/registerPatient",{
+          method: 'POST',
+          body: JSON.stringify({
+            patient_name: nameRef.current.value,
+            patient_email: emailRef.current.value,
+        blood_group: bloodgGrpRef.current.value,
+        patient_mobile: mobileRef.current.value,
+        patient_district: districtRef.current.value,
+        patient_dob: dobRef.current.value,
+        ailment: ailmentRef.current.value,
+        patient_gender: gender
+          }),
+          headers: {
+            'Content-type':'application/json'
+          }
+        }).then(res=>res.json()).then(res=>console.log(res)).catch(err=>console.log(err));
       console.log({
         name: nameRef.current.value,
         email: emailRef.current.value,
@@ -29,13 +45,14 @@ export default function RegisterPatient() {
         districts: districtRef.current.value,
         dob: dobRef.current.value,
         aliment: ailmentRef.current.value,
+        gender:gender
       });
     } else {
       console.log("error");
     }
   };
-  const genderHandler = () => {
-    return;
+  const genderHandler = (event) => {
+    setGender(event.target.value);
   };
   return (
     <div style={{ textAlign: "center", marginTop: "100px" }}>
@@ -138,8 +155,10 @@ export default function RegisterPatient() {
                       className="btn-check"
                       name="gender"
                       id="male"
+                      value="Male"
                       autocomplete="off"
                       required
+                      onChange={genderHandler}
                     />
                     <label
                       className="btn btn-sm btn-outline-secondary"
@@ -154,6 +173,7 @@ export default function RegisterPatient() {
                       name="gender"
                       id="female"
                       autocomplete="off"
+                      value="Female"
                       required
                       onChange={genderHandler}
                     />
@@ -169,6 +189,7 @@ export default function RegisterPatient() {
                       className="btn-check"
                       name="gender"
                       id="secret"
+                      value="others"
                       autocomplete="off"
                       required
                       onChange={genderHandler}
