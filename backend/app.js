@@ -1,6 +1,7 @@
 const express = require("express");
 
-const registerRoutes = require("./routes/register");
+
+const adminRoutes = require("./routes/admin");
 
 const bodyParser = require("body-parser");
 
@@ -23,7 +24,11 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.use("/register", registerRoutes);
+app.use('/admin',adminRoutes)
+
+// app.use("/",(req,res,next)=>{
+//     Patient.findById()
+// });
 
 const PORT = process.env.PORT || 8080;
 
@@ -31,7 +36,9 @@ const PORT = process.env.PORT || 8080;
 Ailments.belongsTo(Patient, {constraints: true, onDelete: 'CASCADE'});
 Patient.hasMany(Ailments);
 
-sequelize.sync().then(result=>{
+sequelize.sync(
+   // {force : true}
+).then(result=>{
     app.listen(PORT, console.log(`Server started on port ${PORT}`));
 }).catch(err => console.log(err));
 
