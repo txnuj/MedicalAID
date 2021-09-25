@@ -12,7 +12,7 @@ export default function AdminRecords(props) {
       <td>{props.ailments}</td>
       <td>
         <button className="record-edit">
-          <i class="fas fa-edit"></i>
+          <i className="fas fa-edit"></i>
         </button>
       </td>
     </tr>
