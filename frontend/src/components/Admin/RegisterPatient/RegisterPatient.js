@@ -14,6 +14,7 @@ export default function RegisterPatient(props) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [recordSubmitted, setRecordSubmitted] = useState(false);
 
+  const todayDate = new Date();
   //UseEffect
   useEffect(() => {
     if (recordSubmitted) {
@@ -228,6 +229,7 @@ export default function RegisterPatient(props) {
                         type="date"
                         name="date"
                         required
+                        max={todayDate}
                         ref={dobRef}
                       />
                       {/* <div className="valid-feedback">Email field is valid!</div>

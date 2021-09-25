@@ -3,10 +3,8 @@ import Button from "../UI/Buttons/Button";
 import "./Signup.css";
 
 export default function Login() {
-  const [isAdmin, setIsAdmin] = useState(false);
   //Input storing handlers
-  const [name, setName] = useState("");
-  const [bloodgroup, setbgroup] = useState("");
+  /*   const [name, setName] = useState("");
   const [age, setage] = useState("");
   const [sex, setsex] = useState("");
   const [district, setdistrict] = useState("");
@@ -38,12 +36,12 @@ export default function Login() {
   const [hospnameValidity, sethospnameValidity] = useState(null);
   const [hosplocValidity, sethosplocValidity] = useState(null);
   const [hosptypeValidity, sethosptypeValidity] = useState(null);
-  const [hospcontValidity, sethospcontValidity] = useState(null);
+  const [hospcontValidity, sethospcontValidity] = useState(null); */
 
   //Handler functions
   //Input handlers
   //Admin
-  const adminIdInputHandler = (e) => {
+  /*   const adminIdInputHandler = (e) => {
     setAdminId(e.target.value);
   };
   //User
@@ -239,7 +237,7 @@ export default function Login() {
         adminIdValidity &&
         hospnameValidity &&
         hosptypeValidity &&
-        hosplocValidity && 
+        hosplocValidity &&
         hospcontValidity
       ) {
         console.log(uname, password, adminId);
@@ -266,386 +264,47 @@ export default function Login() {
         setErrorMessage("Form not valid yet! Try again!");
       }
     }
-  };
+  }; */
 
   return (
-    <div>
-      <div className="auth-choice-container">
-        <h4>I am a / an ,</h4>
-        <div>
-          <button
-            onClick={() => {
-              setIsAdmin(true);
-              setErrorMessage("");
-            }}
-          >
-            Admin <i class="fas fa-user-lock"></i>
-          </button>
-          <button
-            onClick={() => {
-              setIsAdmin(false);
-              setErrorMessage("");
-            }}
-          >
-            User <i class="fas fa-user"></i>
-          </button>
-        </div>
-      </div>
-      <form onSubmit={formSubmitHandler}>
-        <fieldset className="login-fieldset">
-          <legend>{isAdmin ? "Admin" : "User"}</legend>
-          {!isAdmin ? (
-            <div className="username-container">
-              <label
-                htmlFor="userref"
-                id="user-ref-label"
-                onClick={() => {
-                  alert("Your unique Aadhar number:");
-                }}
-                style={{
-                  color: `${userRnoValidity !== false ? "black" : "red"}`,
-                }}
-              >
-                User's Aadhar No: &nbsp;
-              </label>
-              <input
-                type="text"
-                id="userref"
-                name="userref"
-                onChange={userRnoInputHandler}
-                onBlur={userRnoValidityHandler}
-                style={{
-                  outlineColor: `${
-                    userRnoValidity !== false ? "black" : "salmon"
-                  }`,
-                }}
-              />
-              <br />
-              <br />
-              <label
-                htmlFor="name"
-                id="user-ref-label"
-                style={{
-                  color: `${nameValidity !== false ? "black" : "red"}`,
-                }}
-              >
-                User's Name:{" "}
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                onChange={NameInputHandler}
-                onBlur={NameValidityHandler}
-                style={{
-                  outlineColor: `${
-                    nameValidity !== false ? "black" : "salmon"
-                  }`,
-                }}
-              />
-              <br />
-              <br />
-
-              <label
-                htmlFor="bloodgroup"
-                id="user-ref-label"
-                style={{
-                  color: `${bgroupValidity !== false ? "black" : "red"}`,
-                }}
-              >
-                User's bloodgroup:{" "}
-              </label>
-              <input
-                type="text"
-                id="bloodgroup"
-                name="bloodgroup"
-                onChange={bgroupInputHandler}
-                onBlur={bloodgroupValidityHandler}
-                style={{
-                  outlineColor: `${
-                    bgroupValidity !== false ? "black" : "salmon"
-                  }`,
-                }}
-              />
-              <br />
-              <br />
-
-              <label
-                htmlFor="age"
-                id="age-label"
-                style={{
-                  color: `${ageValidity !== false ? "black" : "red"}`,
-                }}
-              >
-                User's age:{"         "}
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              </label>
-              <input
-                type="text"
-                id="age"
-                name="age"
-                onChange={ageInputHandler}
-                onBlur={AgeValidityHandler}
-                style={{
-                  outlineColor: `${ageValidity !== false ? "black" : "salmon"}`,
-                }}
-              />
-              <br />
-              <br />
-
-              <label
-                htmlFor="sex"
-                id="sex-label"
-                style={{
-                  color: `${sexValidity !== false ? "black" : "red"}`,
-                }}
-              >
-                User's sex:{" "}
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              </label>
-              <input
-                type="text"
-                id="sex"
-                name="sex"
-                onChange={sexInputHandler}
-                onBlur={sexValidityHandler}
-                style={{
-                  outlineColor: `${sexValidity !== false ? "black" : "salmon"}`,
-                }}
-              />
-              <br />
-              <br />
-
-              <label
-                htmlFor="mobnum"
-                id="mobnum-label"
-                style={{
-                  color: `${mobValidity !== false ? "black" : "red"}`,
-                }}
-              >
-                User's mob num: &nbsp;&nbsp;
-              </label>
-              <input
-                type="text"
-                id="mobnum"
-                name="mobnum"
-                onChange={numInputHandler}
-                onBlur={mobValidityHandler}
-                style={{
-                  outlineColor: `${mobValidity !== false ? "black" : "salmon"}`,
-                }}
-              />
-              <br />
-              <br />
-
-              <label
-                htmlFor="email"
-                id="email-label"
-                style={{
-                  color: `${emailValidity !== false ? "black" : "red"}`,
-                }}
-              >
-                User's email:{"      "}
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              </label>
-              <input
-                type="text"
-                id="email"
-                name="email"
-                onChange={emailInputHandler}
-                onBlur={emailValidityHandler}
-                style={{
-                  outlineColor: `${
-                    emailValidity !== false ? "black" : "salmon"
-                  }`,
-                }}
-              />
-              <br />
-              <br />
-
-              <label
-                htmlFor="district"
-                id="district-label"
-                style={{
-                  color: `${districtValidity !== false ? "black" : "red"}`,
-                }}
-              >
-                User's district:{" "}
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              </label>
-              <input
-                type="text"
-                id="district"
-                name="district"
-                onChange={districtInputHandler}
-                onBlur={DistrictValidityHandler}
-                style={{
-                  outlineColor: `${
-                    districtValidity !== false ? "black" : "salmon"
-                  }`,
-                }}
-              />
-              <br />
-            </div>
-          ) : (
-            <div className="adminid-container">
-              <label
-                htmlFor="adminid"
-                style={{
-                  color: `${adminIdValidity !== false ? "black" : "red"}`,
-                }}
-              >
-                Hospital ID/Admin ID:
-              </label>
-              <input
-                type="password"
-                id="adminid"
-                name="adminid"
-                onChange={adminIdInputHandler}
-                onBlur={adminIdValidityHandler}
-                style={{
-                  outlineColor: `${
-                    userRnoValidity !== false ? "black" : "salmon"
-                  }`,
-                }}
-              />
-              <br />
-              <br />
-              <label
-                htmlFor="adminid"
-                style={{
-                  color: `${adminIdValidity !== false ? "black" : "red"}`,
-                }}
-              >
-                Hospital Name:
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              </label>
-              <input
-                type="text"
-                id="hospname"
-                name="hospname"
-                onChange={hospnameInputHandler}
-                onBlur={hospnameValidityHandler}
-                style={{
-                  outlineColor: `${
-                    userRnoValidity !== false ? "black" : "salmon"
-                  }`,
-                }}
-              />
-              <br />
-              <br />
-              <label
-                htmlFor="hosploc"
-                style={{
-                  color: `${adminIdValidity !== false ? "black" : "red"}`,
-                }}
-              >
-                Hospital Locality: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              </label>
-              <input
-                type="text"
-                id="hosploc"
-                name="hosploc"
-                onChange={hosplocInputHandler}
-                onBlur={hosplocValidityHandler}
-                style={{
-                  outlineColor: `${
-                    userRnoValidity !== false ? "black" : "salmon"
-                  }`,
-                }}
-              />
-              <br />
-              <br />
-              <label
-                htmlFor="hosptype"
-                style={{
-                  color: `${adminIdValidity !== false ? "black" : "red"}`,
-                }}
-              >
-                Hospital Type:
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              </label>
-              <input
-                type="text"
-                id="hosptype"
-                name="hosptype"
-                onChange={hosptypeInputHandler}
-                onBlur={hosptypeValidityHandler}
-                style={{
-                  outlineColor: `${
-                    userRnoValidity !== false ? "black" : "salmon"
-                  }`,
-                }}
-              />
-                      <br />
-              <br />
-              <label
-                htmlFor="hospcont"
-                style={{
-                  color: `${adminIdValidity !== false ? "black" : "red"}`,
-                }}
-              >
-                Hospital Contact Num:
-              </label>
-              <input
-                type="text"
-                id="hospcont"
-                name="hospcont"
-                onChange={hospcontInputHandler}
-                onBlur={hospcontValidityHandler}
-                style={{
-                  outlineColor: `${
-                    userRnoValidity !== false ? "black" : "salmon"
-                  }`,
-                }}
-              />
-            </div>
-          )}
-          <div className="username-container">
-            <label
-              htmlFor="uname"
-              style={{ color: `${unameValidity !== false ? "black" : "red"}` }}
-            >
-              Create Username: &nbsp;&nbsp;&nbsp;&nbsp;
-            </label>
+    <div className="register">
+      <fieldset className="reg-container">
+        <legend>Register your hospital</legend>
+        <form>
+          <div className="register-form-container">
+            <p>Hospital details</p>
             <input
+              className="signup-text-input"
               type="text"
-              id="uname"
-              name="uname"
-              onChange={unameInputHandler}
-              onBlur={nameValidityHandler}
-              style={{
-                outlineColor: `${unameValidity !== false ? "black" : "salmon"}`,
-              }}
-            />{" "}
-            <br />
-          </div>
-          <div className="password-container">
-            <label
-              htmlFor="pass"
-              style={{
-                color: `${passValidity !== false ? "black" : "red"}`,
-              }}
-            >
-              Create Password: &nbsp;&nbsp;&nbsp;&nbsp;
-            </label>
+              placeholder="Name"
+              required
+            />
             <input
-              type="password"
-              id="pass"
-              name="pass"
-              onChange={passwordInputHandler}
-              onBlur={passwordValidityHandler}
-              style={{
-                outlineColor: `${passValidity !== false ? "black" : "salmon"}`,
-              }}
-            />{" "}
-            <br />
+              className="signup-text-input"
+              type="email"
+              placeholder="Email"
+              required
+            />
+            <input
+              className="signup-text-input"
+              type="text"
+              placeholder="Mobile"
+              maxLength="13"
+              required
+            />
+            <textarea placeholder="Address" rows="7" cols="60" required />
+            <div className="ownership-container">
+              <label for="pdf">Proof of Ownership:</label>
+              <input type="file" name="pdf" accept="application/pdf" />
+            </div>
+          </div>{" "}
+          <div class="reach-button-container">
+            <Button className="reach-out-button">
+              Reach us <i class="far fa-envelope"></i>
+            </Button>
           </div>
-          {errorMessage && <p className="error-msg">{errorMessage}</p>}
-          <Button className="login">Signup</Button>
-        </fieldset>
-      </form>
+        </form>
+      </fieldset>
     </div>
   );
 }
