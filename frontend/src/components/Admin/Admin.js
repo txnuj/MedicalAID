@@ -6,6 +6,7 @@ import { useState } from "react";
 export default function Admin() {
   const [recordsActive, setRecordsActive] = useState(true);
   const [recordFormActive, setRecordFormActive] = useState(false);
+  const [search, setSearch] = useState("");
   const searchRecordsHandler = () => {
     setRecordsActive(true);
     setRecordFormActive(false);
@@ -86,6 +87,9 @@ export default function Admin() {
               type="text"
               class="searchTerm"
               placeholder="What are you looking for?"
+              onChange={(e) => {
+                setSearch(e.target.value);
+              }}
             />
             <button type="submit" class="searchButton">
               <i class="fa fa-search"></i>
@@ -104,7 +108,15 @@ export default function Admin() {
                 <th>Ailments</th>
                 <th></th>
               </tr>
-              {PATIENT_DETAILS.map((details) => (
+              {PATIENT_DETAILS.filter((details) => {
+                if (search === "") {
+                  return details;
+                } else if (
+                  details.name.toLowerCase().includes(search.toLowerCase())
+                ) {
+                  return details;
+                }
+              }).map((details) => (
                 <AdminRecords
                   key={details.id}
                   name={details.name}

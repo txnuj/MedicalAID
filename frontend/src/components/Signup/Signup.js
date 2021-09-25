@@ -37,7 +37,6 @@ export default function Login() {
   const [hospnameValidity, sethospnameValidity] = useState(null);
   const [hosplocValidity, sethosplocValidity] = useState(null);
   const [hosptypeValidity, sethosptypeValidity] = useState(null);
-  
 
   //Handler functions
   //Input handlers
@@ -157,7 +156,7 @@ export default function Login() {
   const DistrictValidityHandler = () => {
     if (district.trim() === "") {
       setdistrictValidity(false);
-      setErrorMessage("Enter any Email!");
+      setErrorMessage("Enter any District!");
     } else {
       setdistrictValidity(true);
       setErrorMessage("");
@@ -220,14 +219,32 @@ export default function Login() {
   const formSubmitHandler = (e) => {
     e.preventDefault();
     if (isAdmin) {
-      if (unameValidity && passValidity && adminIdValidity && hospnameValidity && hosptypeValidity && hosplocValidity) {
+      if (
+        unameValidity &&
+        passValidity &&
+        adminIdValidity &&
+        hospnameValidity &&
+        hosptypeValidity &&
+        hosplocValidity
+      ) {
         console.log(uname, password, adminId);
         setErrorMessage("");
       } else {
         setErrorMessage("Form not valid yet! Try again!");
       }
     } else if (!isAdmin) {
-      if (unameValidity && passValidity && userRnoValidity && nameValidity && bgroupValidity && mobValidity && ageValidity && emailValidity && sexValidity && districtValidity) {
+      if (
+        unameValidity &&
+        passValidity &&
+        userRnoValidity &&
+        nameValidity &&
+        bgroupValidity &&
+        mobValidity &&
+        ageValidity &&
+        emailValidity &&
+        sexValidity &&
+        districtValidity
+      ) {
         console.log(uname, password, userRno);
         setErrorMessage("");
       } else {
@@ -274,7 +291,7 @@ export default function Login() {
                   color: `${userRnoValidity !== false ? "black" : "red"}`,
                 }}
               >
-                User's Aadhar No:{" "}&nbsp;
+                User's Aadhar No: &nbsp;
               </label>
               <input
                 type="text"
@@ -297,7 +314,8 @@ export default function Login() {
                   color: `${nameValidity !== false ? "black" : "red"}`,
                 }}
               >
-                User's Name:{" "}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                User's Name:{" "}
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               </label>
               <input
                 type="text"
@@ -345,7 +363,8 @@ export default function Login() {
                   color: `${ageValidity !== false ? "black" : "red"}`,
                 }}
               >
-                User's age:{"         "}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                User's age:{"         "}
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               </label>
               <input
                 type="text"
@@ -354,9 +373,7 @@ export default function Login() {
                 onChange={ageInputHandler}
                 onBlur={AgeValidityHandler}
                 style={{
-                  outlineColor: `${
-                    ageValidity !== false ? "black" : "salmon"
-                  }`,
+                  outlineColor: `${ageValidity !== false ? "black" : "salmon"}`,
                 }}
               />
               <br />
@@ -369,7 +386,8 @@ export default function Login() {
                   color: `${sexValidity !== false ? "black" : "red"}`,
                 }}
               >
-                User's sex:{" "}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                User's sex:{" "}
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               </label>
               <input
                 type="text"
@@ -378,9 +396,7 @@ export default function Login() {
                 onChange={sexInputHandler}
                 onBlur={sexValidityHandler}
                 style={{
-                  outlineColor: `${
-                    sexValidity !== false ? "black" : "salmon"
-                  }`,
+                  outlineColor: `${sexValidity !== false ? "black" : "salmon"}`,
                 }}
               />
               <br />
@@ -393,7 +409,7 @@ export default function Login() {
                   color: `${mobValidity !== false ? "black" : "red"}`,
                 }}
               >
-                User's mob num:{" "}&nbsp;&nbsp;
+                User's mob num: &nbsp;&nbsp;
               </label>
               <input
                 type="text"
@@ -402,9 +418,7 @@ export default function Login() {
                 onChange={numInputHandler}
                 onBlur={mobValidityHandler}
                 style={{
-                  outlineColor: `${
-                    mobValidity !== false ? "black" : "salmon"
-                  }`,
+                  outlineColor: `${mobValidity !== false ? "black" : "salmon"}`,
                 }}
               />
               <br />
@@ -417,7 +431,8 @@ export default function Login() {
                   color: `${emailValidity !== false ? "black" : "red"}`,
                 }}
               >
-                User's email:{"      "}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                User's email:{"      "}
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               </label>
               <input
                 type="text"
@@ -441,7 +456,8 @@ export default function Login() {
                   color: `${districtValidity !== false ? "black" : "red"}`,
                 }}
               >
-                User's district:{" "}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                User's district:{" "}
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               </label>
               <input
                 type="text"
@@ -457,8 +473,6 @@ export default function Login() {
               />
               <br />
             </div>
-            
-            
           ) : (
             <div className="adminid-container">
               <label
@@ -467,7 +481,7 @@ export default function Login() {
                   color: `${adminIdValidity !== false ? "black" : "red"}`,
                 }}
               >
-                Hospital ID/Admin ID: 
+                Hospital ID/Admin ID:
               </label>
               <input
                 type="password"
@@ -489,7 +503,8 @@ export default function Login() {
                   color: `${adminIdValidity !== false ? "black" : "red"}`,
                 }}
               >
-                Hospital Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Hospital Name:
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               </label>
               <input
                 type="text"
@@ -505,7 +520,7 @@ export default function Login() {
               />
               <br />
               <br />
-                <label
+              <label
                 htmlFor="hosploc"
                 style={{
                   color: `${adminIdValidity !== false ? "black" : "red"}`,
@@ -525,15 +540,16 @@ export default function Login() {
                   }`,
                 }}
               />
-             <br />
               <br />
-                  <label
+              <br />
+              <label
                 htmlFor="hosptype"
                 style={{
                   color: `${adminIdValidity !== false ? "black" : "red"}`,
                 }}
               >
-                Hospital Type: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Hospital Type:
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               </label>
               <input
                 type="text"

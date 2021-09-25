@@ -13,8 +13,8 @@ export default function HomeScreen() {
           <q>- One place to store all your medical records - </q>
         </blockquote>
         <div className="auth-buttons">
-        <Link to="/Signup">
-          <Button className="signup-auth">Sign UP!</Button>
+          <Link to="/signup">
+            <Button className="signup-auth">Sign UP!</Button>
           </Link>
           <Link to="/login">
             <Button className="login-auth">Login</Button>
