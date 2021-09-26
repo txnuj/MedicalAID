@@ -1,8 +1,8 @@
-import { React } from "react";
+import { React, useEffect, useState } from "react";
 import { useRef } from "react";
 import Button from "../UI/Buttons/Button";
 import "./Signup.css";
-import emailjs from 'emailjs-com'
+import emailjs from "emailjs-com";
 
 export default function Login() {
   //Input storing handlers
@@ -268,11 +268,21 @@ export default function Login() {
     }
   }; */
 
+  const [mailStatus, setMailStatus] = useState(false);
+  const [mailPageStatus, setMailPageStatus] = useState(false);
+
   const nameRef = useRef();
   const emailRef = useRef();
   const mobileRef = useRef();
   const addressRef = useRef();
 
+  useEffect(() => {
+    if (mailStatus) {
+      setTimeout(() => {
+        setMailPageStatus(true);
+      }, 1000);
+    }
+  }, [mailStatus]);
   const formSubmitHandler = (e) => {
     e.preventDefault();
     if (
@@ -281,12 +291,22 @@ export default function Login() {
       mobileRef.current.value.trim() !== "" &&
       addressRef.current.value.trim() !== ""
     ) {
-      emailjs.sendForm('gmail', 'template_wo9y4vi', e.target, 'user_4K1juGBBzt655ESKwSejN')
-      .then((result) => {
-          console.log(result.text);
-      }, (error) => {
-          console.log(error.text);
-      });
+      emailjs
+        .sendForm(
+          "gmail",
+          "template_wo9y4vi",
+          e.target,
+          "user_4K1juGBBzt655ESKwSejN"
+        )
+        .then(
+          (result) => {
+            console.log(result.text);
+          },
+          (error) => {
+            console.log(error.text);
+          }
+        );
+      setMailStatus(true);
     } else {
       alert("Fields cannot be empty!");
     }
@@ -296,57 +316,67 @@ export default function Login() {
     <div className="register">
       <fieldset className="reg-container">
         <legend>Register your hospital</legend>
-        <form onSubmit={formSubmitHandler}>
-          <div className="register-form-container">
-            <p>Hospital details</p>
-            <input
-              className="signup-text-input"
-              type="text"
-              name="hospname"
-              id="hospname"
-              ref={nameRef}
-              placeholder="Name"
-              required
-            />
-            <input
-              className="signup-text-input"
-              type="email"
-              name="hospemail"
-              id="hospemail"
-              placeholder="Email"
-              ref={emailRef}
-              required
-            />
-            <input
-              className="signup-text-input"
-              type="text"
-              name="hospmob"
-              id="hospmob"
-              placeholder="Mobile"
-              maxLength="13"
-              ref={mobileRef}
-              required
-            />
-            <textarea
-              placeholder="Address"
-              name="hospadd"
-              id="hospadd"
-              rows="7"
-              cols="60"
-              required
-              ref={addressRef}
-            />
-            <div className="ownership-container">
-              <label for="pdf">Proof of Ownership:</label>
-              <input type="file" name="pdf" accept="application/pdf" required />
+        {!mailPageStatus ? (
+          <form onSubmit={formSubmitHandler}>
+            <div className="register-form-container">
+              <p>Hospital details</p>
+              <input
+                className="signup-text-input"
+                type="text"
+                name="hospname"
+                id="hospname"
+                ref={nameRef}
+                placeholder="Name"
+                required
+              />
+              <input
+                className="signup-text-input"
+                type="email"
+                name="hospemail"
+                id="hospemail"
+                placeholder="Email"
+                ref={emailRef}
+                required
+              />
+              <input
+                className="signup-text-input"
+                type="text"
+                name="hospmob"
+                id="hospmob"
+                placeholder="Mobile"
+                maxLength="13"
+                ref={mobileRef}
+                required
+              />
+              <textarea
+                placeholder="Address"
+                name="hospadd"
+                id="hospadd"
+                rows="7"
+                cols="60"
+                required
+                ref={addressRef}
+              />
+              <div className="ownership-container">
+                <label for="pdf">Proof of Ownership:</label>
+                <input type="file" name="pdf" accept="application/pdf" />
+              </div>
+            </div>{" "}
+            <div class="reach-button-container">
+              <Button className="reach-out-button">
+                Reach us <i class="far fa-envelope"></i>
+              </Button>
             </div>
-          </div>{" "}
-          <div class="reach-button-container">
-            <Button className="reach-out-button">
-              Reach us <i class="far fa-envelope"></i>
-            </Button>
+          </form>
+        ) : (
+          <div>
+            <h2>Thank you for choosing US!</h2>
+            <p>We will reach you back in 2 days max.</p>
+            <br />
+            <p>Stay put!</p>
+            <p>Team Medicords.</p>
           </div>
-        </form>
+        )}
       </fieldset>
     </div>
   );
