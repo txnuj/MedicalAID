@@ -1,4 +1,5 @@
-import { React, useState } from "react";
+import { React } from "react";
+import { useRef } from "react";
 import Button from "../UI/Buttons/Button";
 import "./Signup.css";
 
@@ -266,16 +267,36 @@ export default function Login() {
     }
   }; */
 
+  const nameRef = useRef();
+  const emailRef = useRef();
+  const mobileRef = useRef();
+  const addressRef = useRef();
+
+  const formSubmitHandler = (e) => {
+    e.preventDefault();
+    if (
+      nameRef.current.value.trim() !== "" &&
+      emailRef.current.value.trim() !== "" &&
+      mobileRef.current.value.trim() !== "" &&
+      addressRef.current.value.trim() !== ""
+    ) {
+      //Email code
+    } else {
+      alert("Fields cannot be empty!");
+    }
+  };
+
   return (
     <div className="register">
       <fieldset className="reg-container">
         <legend>Register your hospital</legend>
-        <form>
+        <form onSubmit={formSubmitHandler}>
           <div className="register-form-container">
             <p>Hospital details</p>
             <input
               className="signup-text-input"
               type="text"
+              ref={nameRef}
               placeholder="Name"
               required
             />
@@ -283,6 +304,7 @@ export default function Login() {
               className="signup-text-input"
               type="email"
               placeholder="Email"
+              ref={emailRef}
               required
             />
             <input
@@ -290,12 +312,19 @@ export default function Login() {
               type="text"
               placeholder="Mobile"
               maxLength="13"
+              ref={mobileRef}
               required
             />
-            <textarea placeholder="Address" rows="7" cols="60" required />
+            <textarea
+              placeholder="Address"
+              rows="7"
+              cols="60"
+              required
+              ref={addressRef}
+            />
             <div className="ownership-container">
               <label for="pdf">Proof of Ownership:</label>
-              <input type="file" name="pdf" accept="application/pdf" />
+              <input type="file" name="pdf" accept="application/pdf" required />
             </div>
           </div>{" "}
           <div class="reach-button-container">

@@ -14,7 +14,6 @@ function App() {
   const adminAuthHandler = (admin) => {
     if (admin) {
       setAdminAuth(true);
-      console.log(admin);
     }
   };
   return (

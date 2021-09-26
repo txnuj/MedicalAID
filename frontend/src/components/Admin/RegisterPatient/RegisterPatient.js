@@ -14,7 +14,7 @@ export default function RegisterPatient(props) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [recordSubmitted, setRecordSubmitted] = useState(false);
 
-  const todayDate = new Date();
+  const todayDate = new Date().toISOString().split("T")[0];
   //UseEffect
   useEffect(() => {
     if (recordSubmitted) {
@@ -67,7 +67,7 @@ export default function RegisterPatient(props) {
                 {!isSubmitting ? (
                   <form
                     className="requires-validation"
-                    novalidate
+                    noValidate
                     onSubmit={registerHandler}
                   >
                     <div className="col-md-12">
@@ -239,7 +239,7 @@ export default function RegisterPatient(props) {
                     </div>
                     <div className="col-md-12" style={{ margin: "25px 0px" }}>
                       <select ref={districtRef}>
-                        <option selected disabled hidden>
+                        <option disabled hidden>
                           District
                         </option>
                         {districts.map((district) => (

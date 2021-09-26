@@ -106,7 +106,6 @@ export default function Login(props) {
         } else {
           setErrorMessage("Incorrect credentials!");
         }
-        console.log(uname, password, adminId);
         // fetch("http://localhost:8080/check/getUser",{
         //   method: 'POST',
         //   body: JSON.stringify({
@@ -125,7 +124,6 @@ export default function Login(props) {
       }
     } else {
       if (unameValidity && passValidity && userRnoValidity) {
-        console.log(uname, password, userRno);
         setErrorMessage("");
       } else {
         setErrorMessage("Form not valid yet! Try again!");
