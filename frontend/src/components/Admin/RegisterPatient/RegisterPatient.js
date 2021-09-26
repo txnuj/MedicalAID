@@ -35,6 +35,25 @@ export default function RegisterPatient(props) {
       /\d/.test(mobileRef.current.value) &&
       ailmentRef.current.value.trim() !== ""
     ) {
+      fetch("http://localhost:8080/admin/api/registerPatient",{
+            method: 'POST',
+            body: JSON.stringify({
+               patient_name :nameRef.current.value,
+             blood_group : bloodgGrpRef.current.value,
+             patient_district : districtRef.current.value,
+             patient_dob : dobRef.current.value,
+             patient_gender : gender,
+              patient_mobile : mobileRef.current.value,
+             patient_email: emailRef.current.value,
+             lastVisit: new Date().toISOString().slice(0, 10),
+           ailment : ailmentRef.current.value,
+            }),
+            headers: {
+              'Content-type':'application/json'
+            }
+          }).then(res=>res.json()).then(res=>{
+           console.log(res);
+          }).catch(err=>console.log(err));
       props.updateRecords({
         name: nameRef.current.value,
         email: emailRef.current.value,

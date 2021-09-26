@@ -101,8 +101,29 @@ export default function Login(props) {
           uname === adminAccess.name &&
           password === adminAccess.pass
         ) {
-          props.setAuth(true);
-          history.push("/admin");
+          fetch("http://localhost:8080/login/api/verifyAdmin",{
+            method: 'POST',
+            body: JSON.stringify({
+              ref_no :adminAccess.id,
+              username: adminAccess.name,
+              password: adminAccess.pass
+            }),
+            headers: {
+              'Content-type':'application/json'
+            }
+          }).then(res=>res.json()).then(res=>{
+            console.log(res);
+            if(res.message==='ok'){
+              props.setAuth(true);
+              history.push("/admin");
+            }else{
+              alert("Invalid user credentials");
+            }
+           
+          }).catch(err=>console.log(err));
+  
+          // props.setAuth(true);
+          // history.push("/admin");
         } else {
           setErrorMessage("Incorrect credentials!");
         }
