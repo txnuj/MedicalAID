@@ -338,7 +338,7 @@ export default function Login() {
             />
             <div className="ownership-container">
               <label for="pdf">Proof of Ownership:</label>
-              <input type="file" name="pdf" accept="application/pdf" required />
+              <input type="file" name="pdf" accept="application/pdf"/>
             </div>
           </div>{" "}
           <div class="reach-button-container">
