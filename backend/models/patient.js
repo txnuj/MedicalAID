@@ -35,6 +35,7 @@ const Patient = sequalize.define('patient',{
         type:Sequelize.STRING,
         unique:true
     },
+    last_visit: Sequelize.DATE,
     password:{
         type:Sequelize.STRING,
         allowNull:false

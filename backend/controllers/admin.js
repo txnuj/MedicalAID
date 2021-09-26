@@ -10,6 +10,7 @@ exports.createPatientProfile = (req, res, next) => {
   const patient_mobile = req.body.patient_mobile;
   const patient_email = req.body.patient_email;
   const ailment = req.body.ailment;
+  const last_visit = req.body.lastVisit;
   const password = "123456";
 
   Patient.create({
@@ -20,6 +21,7 @@ exports.createPatientProfile = (req, res, next) => {
     patient_mobile: patient_mobile,
     patient_district: patient_district,
     patient_email: patient_email,
+    last_visit:last_visit,
     password: password,
   })
     .then((result) => res.json({message:"created successful"}))
