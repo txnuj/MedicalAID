@@ -2,6 +2,7 @@ const express = require("express");
 
 
 const adminRoutes = require("./routes/admin");
+const loginRoutes = require("./routes/login");
 
 const bodyParser = require("body-parser");
 
@@ -25,6 +26,7 @@ app.use(function (req, res, next) {
 });
 
 app.use('/admin',adminRoutes)
+app.use('/login',loginRoutes);
 
 // app.use("/",(req,res,next)=>{
 //     Patient.findById()
