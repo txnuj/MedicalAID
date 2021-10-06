@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
 import Aboutus from "../AboutUs/Aboutus";
+import ContactUs from "../ContactUs/ContactUs";
 
 export default function Header() {
   const [aboutUsActive, setAboutUsActive] = useState(false);
+  const [contactUsActive, setContactUsActive] = useState(false);
 
   const closeAboutHandler = () => {
     setAboutUsActive(false);
@@ -12,6 +14,7 @@ export default function Header() {
   return (
     <React.Fragment>
       {aboutUsActive && <Aboutus onClickClose={closeAboutHandler} />}
+      {contactUsActive && <ContactUs />}
       <div className="nav-container">
         <Link to="/" style={{ textDecoration: "none", color: "white" }}>
           {" "}
@@ -28,7 +31,14 @@ export default function Header() {
           >
             About us
           </li>
-          <li className="link">Contact us</li>
+          <li
+            className="link"
+            onClick={() => {
+              setContactUsActive(true);
+            }}
+          >
+            Contact us
+          </li>
         </ul>
       </div>
     </React.Fragment>
