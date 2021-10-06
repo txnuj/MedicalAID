@@ -5,6 +5,7 @@ export default function Button(props) {
   return (
     <React.Fragment>
       <button
+        onClick={props.onClickClose}
         className={
           props.className
             ? `${props.className} button-default`
