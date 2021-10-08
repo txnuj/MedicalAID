@@ -1,7 +1,7 @@
 import React from "react";
 import UserRecord from "./Records/UserRecord";
 import "./UserPage.css";
-import { Redirect } from "react-router";
+/* import { Redirect } from "react-router"; */
 import { useState } from "react";
 
 export default function UserPage({ authorized }) {
@@ -20,9 +20,9 @@ export default function UserPage({ authorized }) {
       ailments: "Aids",
     },
   ];
-  if (!authorized) {
+  /*  if (!authorized) {
     return <Redirect to="/login" />;
-  }
+  } */
   return (
     <div className="user-container">
       <div className="user-card">
