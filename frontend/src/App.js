@@ -8,9 +8,11 @@ import Login from "./components/Login/Login";
 import Signup from "./components/Signup/Signup";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NotFound from "./components/NotFound/NotFound";
+import UserPage from "./components/UserPage/UserPage";
 
 function App() {
   const [adminAuth, setAdminAuth] = useState(false);
+  const [userAuth, setUserAuth] = useState(false);
   const adminAuthHandler = (admin) => {
     if (admin) {
       setAdminAuth(true);
@@ -30,6 +32,9 @@ function App() {
           </Route>
           <Route exact path="/admin">
             <Admin authorized={adminAuth} />
+          </Route>
+          <Route exact path="/user">
+            <UserPage authorized={userAuth} />
           </Route>
           <NotFound />
         </Switch>
