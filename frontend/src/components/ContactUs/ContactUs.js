@@ -19,9 +19,15 @@ export default function ContactUs(props) {
           <div>
             <h4 style={{ fontSize: "1.2rem" }}>Social media</h4>
             <div className="icons">
-              <i style={{ cursor: "pointer" }} class="fab fa-facebook"></i>
-              <i style={{ cursor: "pointer" }} class="fab fa-instagram"></i>
-              <i style={{ cursor: "pointer" }} class="fab fa-twitter"></i>
+              <a href="https://www.facebook.com/">
+                <i style={{ cursor: "pointer" }} class="fab fa-facebook"></i>
+              </a>
+              <a href="https://www.instagram.com/">
+                <i style={{ cursor: "pointer" }} class="fab fa-instagram"></i>
+              </a>
+              <a href="https://twitter.com/?lang=en">
+                <i style={{ cursor: "pointer" }} class="fab fa-twitter"></i>
+              </a>
             </div>
           </div>
         </div>

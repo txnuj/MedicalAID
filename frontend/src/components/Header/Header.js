@@ -11,10 +11,13 @@ export default function Header() {
   const closeAboutHandler = () => {
     setAboutUsActive(false);
   };
+  const closeContactHandler = () => {
+    setContactUsActive(false);
+  };
   return (
     <React.Fragment>
       {aboutUsActive && <Aboutus onClickClose={closeAboutHandler} />}
-      {contactUsActive && <ContactUs />}
+      {contactUsActive && <ContactUs onClickClose={closeContactHandler} />}
       <div className="nav-container">
         <Link to="/" style={{ textDecoration: "none", color: "white" }}>
           {" "}

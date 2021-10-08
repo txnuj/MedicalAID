@@ -21,6 +21,7 @@
 }
 .icons > * {
   padding: 20px;
+  margin-left: 20px;
   font-size: 1.6rem;
 }
 .reachus-container a:hover {
