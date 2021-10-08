@@ -18,6 +18,11 @@ function App() {
       setAdminAuth(true);
     }
   };
+  const userAuthHandler = (user) => {
+    if (user) {
+      setUserAuth(true);
+    }
+  };
   return (
     <Router>
       <React.Fragment>
@@ -28,7 +33,10 @@ function App() {
             <Signup />
           </Route>
           <Route exact path="/login">
-            <Login setAuth={adminAuthHandler} />
+            <Login
+              setAdminAuth={adminAuthHandler}
+              setUserAuth={userAuthHandler}
+            />
           </Route>
           <Route exact path="/admin">
             <Admin authorized={adminAuth} />

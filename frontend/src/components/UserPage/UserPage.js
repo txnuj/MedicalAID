@@ -1,9 +1,10 @@
 import React from "react";
 import UserRecord from "./Records/UserRecord";
 import "./UserPage.css";
+import { Redirect } from "react-router";
 import { useState } from "react";
 
-export default function UserPage() {
+export default function UserPage({ authorized }) {
   const [search, setSearch] = useState("");
 
   const PATIENT_DETAILS = [
@@ -19,6 +20,9 @@ export default function UserPage() {
       ailments: "Aids",
     },
   ];
+  if (!authorized) {
+    return <Redirect to="/login" />;
+  }
   return (
     <div className="user-container">
       <div className="user-card">
@@ -28,7 +32,7 @@ export default function UserPage() {
         />
         <div className="card-details">
           <h2>Tanuj Vijayakumar</h2>
-          <p>+91 2131231223</p>
+          <p>+91 6969696969</p>
           <p>
             Blood Group: <b>O+</b>
           </p>

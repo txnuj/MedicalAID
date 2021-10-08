@@ -10,7 +10,13 @@ export default function Login(props) {
     name: "admin",
     pass: "admin",
   };
+  let userAccess = {
+    id: "6969696969",
+    name: "user",
+    pass: "user",
+  };
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isUser, setIsUser] = useState(false);
   //Input storing handlers
   const [uname, setUname] = useState("");
   const [password, setPassword] = useState("");
@@ -101,29 +107,45 @@ export default function Login(props) {
           uname === adminAccess.name &&
           password === adminAccess.pass
         ) {
-          fetch("http://localhost:8080/login/api/verifyAdmin",{
-            method: 'POST',
+          fetch("http://localhost:8080/login/api/verifyAdmin", {
+            method: "POST",
             body: JSON.stringify({
-              ref_no :adminAccess.id,
+              ref_no: adminAccess.id,
               username: adminAccess.name,
-              password: adminAccess.pass
+              password: adminAccess.pass,
             }),
             headers: {
-              'Content-type':'application/json'
-            }
-          }).then(res=>res.json()).then(res=>{
-            console.log(res);
-            if(res.message==='ok'){
-              props.setAuth(true);
-              history.push("/admin");
-            }else{
-              alert("Invalid user credentials");
-            }
-           
-          }).catch(err=>console.log(err));
-  
+              "Content-type": "application/json",
+            },
+          })
+            .then((res) => res.json())
+            .then((res) => {
+              console.log(res);
+              if (res.message === "ok") {
+                props.setAuth(true);
+                history.push("/admin");
+              } else {
+                alert("Invalid user credentials");
+              }
+            })
+            .catch((err) => console.log(err));
+
           // props.setAuth(true);
           // history.push("/admin");
+        } else if (isUser) {
+          console.log("hello");
+          if (unameValidity && passValidity && userRnoValidity) {
+            if (
+              adminId === adminAccess.id &&
+              uname === adminAccess.name &&
+              password === adminAccess.pass
+            ) {
+              props.setUserAuth(true);
+              history.push("/admin");
+            } else {
+              alert("Invalid user credentials");
+            }
+          }
         } else {
           setErrorMessage("Incorrect credentials!");
         }
@@ -160,6 +182,7 @@ export default function Login(props) {
           <button
             onClick={() => {
               setIsAdmin(true);
+              setIsUser(false);
               setErrorMessage("");
             }}
           >
@@ -168,6 +191,7 @@ export default function Login(props) {
           <button
             onClick={() => {
               setIsAdmin(false);
+              setIsUser(true);
               setErrorMessage("");
             }}
           >

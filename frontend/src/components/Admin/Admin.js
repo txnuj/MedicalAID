@@ -1,4 +1,4 @@
-import React , {useEffect} from "react";
+import React, { useEffect } from "react";
 import AdminRecords from "./Records/AdminRecords";
 import "./Admin.css";
 import { useState } from "react";
@@ -6,14 +6,16 @@ import { Redirect } from "react-router";
 import RegisterPatient from "./RegisterPatient/RegisterPatient";
 
 export default function Admin({ authorized }) {
-
   useEffect(() => {
-    fetch("http://localhost:8080/admin/api/getAllPatients",{
-          method: 'GET',
-          headers: {
-            'Content-type':'application/json'
-          }
-        }).then(res=>res.json()).then(res=>console.log(res)).catch(err=>console.log(err));
+    fetch("http://localhost:8080/admin/api/getAllPatients", {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   }, []);
 
   const PATIENT_DETAILS = [
