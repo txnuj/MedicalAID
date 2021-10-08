@@ -132,20 +132,6 @@ export default function Login(props) {
 
           // props.setAuth(true);
           // history.push("/admin");
-        } else if (isUser) {
-          console.log("hello");
-          if (unameValidity && passValidity && userRnoValidity) {
-            if (
-              adminId === adminAccess.id &&
-              uname === adminAccess.name &&
-              password === adminAccess.pass
-            ) {
-              props.setUserAuth(true);
-              history.push("/admin");
-            } else {
-              alert("Invalid user credentials");
-            }
-          }
         } else {
           setErrorMessage("Incorrect credentials!");
         }
