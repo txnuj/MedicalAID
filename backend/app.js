@@ -37,10 +37,11 @@ const PORT = process.env.PORT || 8080;
 
 Ailments.belongsTo(Patient, {constraints: true, onDelete: 'CASCADE'});
 Patient.hasMany(Ailments);
+app.listen(PORT, console.log(`Server started on port ${PORT}`));
 
 sequelize.sync(
-   // {force : true}
+   //{force : true}
 ).then(result=>{
-    app.listen(PORT, console.log(`Server started on port ${PORT}`));
+   // app.listen(PORT, console.log(`Server started on port ${PORT}`));
 }).catch(err => console.log(err));
 

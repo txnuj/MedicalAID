@@ -154,6 +154,29 @@ export default function Login(props) {
     } else {
       if (unameValidity && passValidity && userRnoValidity) {
         setErrorMessage("");
+        fetch("http://localhost:8080/login/api/verifyPatient", {
+          method: "POST",
+          body: JSON.stringify({
+            ref_no: userAccess.id,
+            username: userAccess.name,
+            password: userAccess.pass,
+          }),
+          headers: {
+            "Content-type": "application/json",
+          },
+        })
+          .then((res) => res.json())
+          .then((res) => {
+            console.log(res);
+            if (res.message === "ok") {
+              props.setAuth(true);
+              history.push("/user");
+            } else {
+              alert("Invalid user credentials");
+            }
+          })
+          .catch((err) => console.log(err));
+
       } else {
         setErrorMessage("Form not valid yet! Try again!");
       }

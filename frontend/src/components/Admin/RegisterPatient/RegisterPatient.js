@@ -53,20 +53,21 @@ export default function RegisterPatient(props) {
             }
           }).then(res=>res.json()).then(res=>{
            console.log(res);
+           props.updateRecords({
+            name: nameRef.current.value,
+            email: emailRef.current.value,
+            bgroup: bloodgGrpRef.current.value,
+            mobile: mobileRef.current.value,
+            sex: gender,
+            districts: districtRef.current.value,
+            dob: dobRef.current.value,
+            lastVisit: new Date().toISOString().slice(0, 10),
+            age,
+            ailments: ailmentRef.current.value,
+          });
+          setRecordSubmitted(true);
           }).catch(err=>console.log(err));
-      props.updateRecords({
-        name: nameRef.current.value,
-        email: emailRef.current.value,
-        bgroup: bloodgGrpRef.current.value,
-        mobile: mobileRef.current.value,
-        sex: gender,
-        districts: districtRef.current.value,
-        dob: dobRef.current.value,
-        lastVisit: new Date().toISOString().slice(0, 10),
-        age,
-        ailments: ailmentRef.current.value,
-      });
-      setRecordSubmitted(true);
+      
     } else {
       alert("Input values are not proper. Try again! ");
     }
